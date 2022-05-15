@@ -33,8 +33,8 @@ const CategoryForm = () => {
   return (
     <form>
       <label htmlFor="category">New Category: </label>
-      <input onChange={addingTitle} type="text" name="category" value={title}/>
-      <button onClick={addCategory}>Add category</button>
+      <input className="form-control mb-1 col-6" onChange={addingTitle} type="text" name="category" value={title}/>
+      <button className="btn btn-primary" onClick={addCategory}>Add category</button>
       
     </form>
   )

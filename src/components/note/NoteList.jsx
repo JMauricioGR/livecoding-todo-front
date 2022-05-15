@@ -6,10 +6,7 @@ const NoteList = ({notes, id, search}) => {
 
 
   const filterNotesByTag = (notesToFilter, searchText) => {
-    console.log('------ notesToFilter ------');
-    console.log(notesToFilter);
-    console.log('------ searchText ------');
-    console.log(searchText);
+    
 
     const result = []
     for(let note of notesToFilter){

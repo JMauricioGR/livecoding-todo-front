@@ -51,11 +51,11 @@ const NoteForm = ({id}) => {
     <div className="card" >
       <form>
         <label htmlFor="note">Add Note: </label>
-        <input onChange={addingMessage} type="text" name="note" value={message} placeholder={id===state.note.categoryId?state.note.message:''}/>
+        <input className="form-control"  onChange={addingMessage} type="text" name="note" value={message} placeholder={id===state.note.categoryId?state.note.message:''}/>
         
         
         
-        {id===state.note.categoryId?<button onClick={editNote}>Edit note</button>:<button onClick={addNote}>Add note</button>}
+        {id===state.note.categoryId?<button className="btn btn-info" onClick={editNote}>Edit note</button>:<button className="btn btn-success" onClick={addNote}>Add note</button>}
       </form>
     </div>
   )

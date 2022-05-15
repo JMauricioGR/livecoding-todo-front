@@ -39,10 +39,10 @@ const Note = ({note}) => {
   }
   
   return (
-    <div >
+    <div className="mb-5 mt-4 ">
       <h4  style={note.done?{'textDecoration': 'line-through'}:{}}>{note.message}</h4>
-      <input  onChange={onCheckbox} type="checkbox" checked={note.done} />
-      <button className="btn btn-secundary " onClick={() => onDeleteNote(note.id)}>delete note</button>
+      <input className="m-2" onChange={onCheckbox} type="checkbox" checked={note.done} />
+      <button className="btn btn-danger " onClick={() => onDeleteNote(note.id)}>delete note</button>
       <button className="btn btn-primary " onClick={editNote}>edit note</button>
       <TagForm  noteId={note.id}/>
       <TagList tags={note.categoryTagDto} />

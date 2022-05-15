@@ -50,10 +50,10 @@ const CategoryList = () => {
 
   return (
     <div>
-      <h1>Hello from category list</h1>
+      <h1>To do App with Tags</h1>
       <CategoryForm />
       <label htmlFor="search">Search: </label>
-      <input type="text" name="search" onChange={searchByTags} />
+      <input className="form-control mb-5 col-6" type="text" name="search" onChange={searchByTags} />
       {state.categoryList.map(category => <Category key={category.id}category={category} search={search} />)}
     </div>
   )

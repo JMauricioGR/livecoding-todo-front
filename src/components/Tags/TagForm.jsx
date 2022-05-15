@@ -36,10 +36,10 @@ const TagForm = ({ noteId }) => {
   
 
   return (
-    <form className='card col-4 p-2'>
+    <form className='card col-6 p-2'>
       <label htmlFor="tag">Add Tag: </label>
-        <input onChange={addingTag} type="text" name="tag" value={categoryTag} />
-        <button onClick={addTag} >Add Tag</button>
+        <input className="form-control mb-2" onChange={addingTag} type="text" name="tag" value={categoryTag} />
+        <button className="btn btn-primary" onClick={addTag} >Add Tag</button>
     </form>
   )
 }

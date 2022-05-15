@@ -21,7 +21,7 @@ const Tag = ({tag}) => {
   return (
     <span className="m-2">
       <label htmlFor="">#{tag.categoryTag}</label>
-      <button onClick={() => actionDeleteTag(tag.id)}>X</button>
+      <button className="btn btn-primary" onClick={() => actionDeleteTag(tag.id)}>X</button>
     </span>
   )
 }
