@@ -7,7 +7,7 @@ const NoteForm = ({id}) => {
   const {state, dispatch} = useContext(Store)
 
   const [message, setMessage] = useState('')
-
+  
   const addingMessage = (e) => {
     setMessage(e.target.value)
   }
@@ -18,8 +18,9 @@ const NoteForm = ({id}) => {
       const note = {
         message,
         done: false,
-        categoryId: id
+        categoryId: id        
       }
+      
       const response = await postNote(note)
       const action = {
         type: 'add-note',
@@ -44,11 +45,16 @@ const NoteForm = ({id}) => {
     }
   }
 
+  
+
   return (
-    <div>
+    <div className="card" >
       <form>
-        <label htmlFor="note"></label>
+        <label htmlFor="note">Add Note: </label>
         <input onChange={addingMessage} type="text" name="note" value={message} placeholder={id===state.note.categoryId?state.note.message:''}/>
+        
+        
+        
         {id===state.note.categoryId?<button onClick={editNote}>Edit note</button>:<button onClick={addNote}>Add note</button>}
       </form>
     </div>
