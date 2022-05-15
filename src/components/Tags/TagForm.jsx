@@ -22,7 +22,6 @@ const TagForm = ({ noteId }) => {
     }
     
     const response = await postTag(tagToSend)
-    console.log(response);
     const action = {
       type: 'create-note-tag',
       payload: response

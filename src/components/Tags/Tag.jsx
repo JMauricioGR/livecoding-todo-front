@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { deleteTag } from '../../actions/TagActions/tagActions';
+import { Store } from '../../state/StoreProvider';
 
-const Tag = (tag) => {
+const Tag = ({tag}) => {
 
-  const deleteTag = async(id) => {
-    
+  const {dispatch} = useContext(Store)
+
+  const actionDeleteTag = async(id) => {   
 
     const response = await deleteTag(id);
+    if(response.status === 200){
+      const action ={
+        type: 'delete-note-tag',
+        payload: tag
+      }
+      dispatch(action)
+    }
   }
-  
   
   return (
     <span className="m-2">
-      <label htmlFor="">#{tag.tag}</label>
-      <button onClick={() => deleteTag(tag.id)}>X</button>
+      <label htmlFor="">#{tag.categoryTag}</label>
+      <button onClick={() => actionDeleteTag(tag.id)}>X</button>
     </span>
   )
 }

@@ -66,14 +66,26 @@ const reducer = (state, action) => {
     case 'create-note-tag':
       const categoryWithNoteToUpdateTags = state.categoryList.find(category =>category.notes.find(note => note.id === action.payload.noteId))
       const noteWithTagToAdd = categoryWithNoteToUpdateTags.notes.find(noteTag => noteTag.id === action.payload.noteId)
-      console.log(`Note with tag to Add`);
-      console.log(noteWithTagToAdd);
+      
+      
       const noteUpdatedTags = {...noteWithTagToAdd, categoryTagDto: [...noteWithTagToAdd.categoryTagDto, action.payload] }
       const newListOfNotes = categoryWithNoteToUpdateTags.notes.map(noteItem => noteItem.id === action.payload.noteId?noteUpdatedTags:noteItem)
       const newCategoryWithTagsUpdatedInNotes = {...categoryWithNoteToUpdateTags, notes: newListOfNotes}
       const newCategoryList = state.categoryList.map(category => category.id === noteUpdatedTags.categoryId?newCategoryWithTagsUpdatedInNotes:category)
       const newState = {...state, categoryList: newCategoryList}
+      console.log(newState);
       return newState
+
+    case 'delete-note-tag':
+      const categoryWithNoteToDeleteTag = state.categoryList.find(category => category.notes.find(note=> note.id === action.payload.noteId))
+      const noteWithTagToDelete = categoryWithNoteToDeleteTag.notes.find(noteItem => noteItem.id === action.payload.noteId)
+      const tagsWithoutDeletedTag = noteWithTagToDelete.categoryTagDto.filter(tagItem => tagItem.id !== action.payload.id)
+      const newNoteWithoutDeletedTag = {...noteWithTagToDelete, categoryTagDto: tagsWithoutDeletedTag}
+      const newCategoryWithNoteWithoutDeletedTag = {...categoryWithNoteToDeleteTag, notes: [newNoteWithoutDeletedTag]}
+      const newCategoryListWithTagsNotesUpdated = state.categoryList.map(category => category.id === newNoteWithoutDeletedTag.categoryId?newCategoryWithNoteWithoutDeletedTag:category)
+      const newStateWithTagsUpdated = {...state, categoryList: newCategoryListWithTagsNotesUpdated}
+      console.log(newStateWithTagsUpdated);
+      return newStateWithTagsUpdated
   }
 }
 
