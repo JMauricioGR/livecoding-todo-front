@@ -1,10 +1,11 @@
 import React from 'react'
 import Tag from './Tag'
 
-const TagList = ({ tags }) => {
+const TagList = (tags) => {
+  
   return (
     <div>
-      {tags.map(noteItem => <Tag key={noteItem.id}  tag={noteItem.categoryTag} />)}
+      {tags.tags.map(tagItem => <Tag key={tagItem.id} tag={tagItem.categoryTag} />)}
     </div>
   )
 }
