@@ -28,11 +28,14 @@ const CategoryForm = () => {
     setTitle(e.target.value)
   }
 
+  
+
   return (
     <form>
-      <label htmlFor="category"></label>
+      <label htmlFor="category">New Category: </label>
       <input onChange={addingTitle} type="text" name="category" value={title}/>
       <button onClick={addCategory}>Add category</button>
+      
     </form>
   )
 }
