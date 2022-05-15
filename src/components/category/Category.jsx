@@ -3,7 +3,7 @@ import { deleteCategoryBack } from '../../actions/categoryActions/categoryAction
 import { Store } from '../../state/StoreProvider';
 import NoteList from '../note/NoteList'
 
-const Category = ({category: {id, title, notes}}) => {
+const Category = ({category: {id, title, notes}, search}) => {
 
   const {dispatch} = useContext(Store)
 
@@ -22,7 +22,7 @@ const Category = ({category: {id, title, notes}}) => {
     <div>
       <h2>{title}</h2>
       <button onClick={() => deleteCategory(id)}>Delete category</button>
-      <NoteList id={id} notes={notes}/>
+      <NoteList id={id} notes={notes} search={search}/>
     </div>
   )
 }

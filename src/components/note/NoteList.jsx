@@ -2,11 +2,35 @@ import React from 'react'
 import Note from './Note'
 import NoteForm from './NoteForm'
 
-const NoteList = ({notes, id}) => {
+const NoteList = ({notes, id, search}) => {
+
+
+  const filterNotesByTag = (notesToFilter, searchText) => {
+    console.log('------ notesToFilter ------');
+    console.log(notesToFilter);
+    console.log('------ searchText ------');
+    console.log(searchText);
+
+    const result = []
+    for(let note of notesToFilter){
+      for(let tag of note.categoryTagDto){
+        if(tag.categoryTag.includes(searchText) ){
+          console.log('----- note -----');
+          console.log(note);          
+          result.push(note)
+        }
+      }
+    }
+    console.log('----- result -----')
+    console.log(result)
+    return result    
+  }
+   
+  filterNotesByTag(notes, search)
   return (
     <div className='card m-5 p-2' >
       <NoteForm id={id}/>
-      {notes.map(note => <Note key={note.id} note={note}/>)}
+      {search===''?notes.map(note => <Note key={note.id} note={note}/>):filterNotesByTag(notes, search).map(note => <Note key={note.id} note={note}/>)}
     </div>
   )
 }
